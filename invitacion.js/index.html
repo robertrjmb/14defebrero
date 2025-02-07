@@ -1,0 +1,182 @@
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script src="js/script.js"></script>
+<audio autoplay loop>
+  <source src="media/musica.mp3" type="audio/mpeg">
+</audio>
+<a href="media/carta.pdf" download></a>
+
+    <style>
+   body {
+    background-image: url("https://i.pinimg.com/originals/4f/ec/8f/4fec8f12810c8baa64595e66435be874.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: center; /* Centra verticalmente */
+    min-height: 100vh;
+    margin: 0;
+}
+
+@keyframes moverOsitos {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.ositos-container {
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 20px 0;
+}
+
+.osito {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    animation: moverOsitos 2s linear infinite alternate;
+}
+
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* width: 50%;  Puedes agregar un ancho fijo si lo deseas */
+    /* max-width: 600px;  O un ancho máximo */
+}  
+.container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.button-group {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#noButton {
+  background-color: #ffcccc; /* Rojo claro */
+}
+
+#yesButton {
+  background-color: #ccffcc; /* Verde claro */
+}
+
+#message {
+  margin-top: 30px;
+}
+
+a {
+  color: #8e44ad; /* Morado */
+  text-decoration: none;
+}
+
+.boton-descargar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc143c; /* Rojo carmesí */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transición suave */
+    background-image: linear-gradient(to bottom, #dc143c, #b01030); /* Degradado inicial */
+    border: none; /* Quita el borde predeterminado */
+    cursor: pointer; /* Cambia el cursor a una mano */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave */
+}
+
+.boton-descargar:active {
+    background-image: linear-gradient(to bottom, #b01030, #dc143c); /* Degradado inverso al hacer clic */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Sombra más tenue al hacer clic */
+    transform: translateY(1px); /* Desplaza el botón ligeramente hacia abajo */
+}
+
+    </style>
+
+</head>
+<body>
+  <div class="ositos-container">
+    <img class="osito" src=" https://i.pinimg.com/originals/47/6b/85/476b85783b816fef1d2c56ebe247cc0f.gif " alt="Osito">
+    <img class="osito" src=" https://i.pinimg.com/originals/fc/64/bc/fc64bc2c19be7cf31dd55e1c1dfb7b5a.gif " alt="Osito">
+    <img class="osito" src="https://i.pinimg.com/originals/a5/30/54/a53054639df3a2e59520ba089a8544fd.gif  " alt="Osito">
+     </div>
+
+  <div class="container">
+    <h1>¿Quieres ser mi cita para San Valentín?</h1>
+    <div class="button-group">
+      <button id="noButton">No</button>
+      <button id="yesButton">Sí</button>
+    </div>
+    <div id="message" style="display: none;">
+      <h2>¡Genial! Sabía que dirías que sí  ¡Nos vemos el 14 de febrero!❤️ </h2>
+      <a href="invitacion.js/musica.mp3/carta para mi amor luis.pdf" download class="boton-descargar">
+          Descargar carta
+      </a>
+  </div>
+  </div>
+
+
+  
+  <audio id="miAudio" preload="auto">
+    <source src=" invitacion.js/musica.mp3/Lauv - I Like Me Better [Official Audio].mp3 " type="audio/mpeg">
+    Tu navegador no soporta la reproducción de audio.
+  </audio>
+  
+  
+  <script>
+    const noButton = document.getElementById('noButton');
+const yesButton = document.getElementById('yesButton');
+const message = document.getElementById('message');
+
+noButton.addEventListener('mouseover', () => {
+  const maxX = window.innerWidth - noButton.offsetWidth;
+  const maxY = window.innerHeight - noButton.offsetHeight;
+
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
+
+  noButton.style.position = 'absolute';
+  noButton.style.left = randomX + 'px';
+  noButton.style.top = randomY + 'px';
+
+  yesButton.style.transform = 'scale(1.2)'; // Botón "Sí" más grande
+});
+
+yesButton.addEventListener('click', () => {
+  message.style.display = 'block';
+  document.querySelector('.button-group').style.display = 'none'; // Ocultar botones
+});
+
+// Obtener el elemento de audio
+var audio = document.getElementById("miAudio");
+
+// Función para reproducir el audio
+function reproducirAudio() {
+  audio.play();
+}
+
+// Evento onclick para reproducir al hacer clic en cualquier parte de la página
+document.onclick = reproducirAudio;
+
+  </script>
+</body>
+</html>
